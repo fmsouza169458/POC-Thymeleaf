@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Ambiente de testes para metodos Thymeleaf com Spring Boot</title>
+
+    <link rel="stylesheet" th:href="@{webjars/bootstrap/4.2.1/css/bootstrap.min.css}"/>
+    <link rel="stylesheet" th:href="@{/css/main.css}"/>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        table {
+            border-collapse: collapse;
+            width: 40%;
+            margin: 20px;
+            float: left;
+            margin-right: 2%;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        }
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #333;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(odd) {
+            background-color: #fff;
+        }
+        .input-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
+    <a class="navbar-brand" href="/hello?name=Dates&param=2000-01-01">Dates</a>
+    <a class="navbar-brand" href="/hello?name=Numbers&param=10">Numbers</a>
+    <a class="navbar-brand" href="/hello?name=Strings&param=Exemplo">Strings</a>
+
+</nav>
+
+<main role="main" class="container">
+    <th:block th:if="${message == 'Dates'}">
+        <div th:replace="datas :: contentA" />
+    </th:block>
+
+    <th:block th:if="${message == 'Numbers'}">
+        <div th:replace="numeros :: contentA" />
+    </th:block>
+
+    <th:block th:if="${message == 'Strings'}">
+        <div th:replace="strings :: contentA" />
+    </th:block>
+
+</main>
+
+<script type="text/javascript" th:src="@{webjars/bootstrap/4.2.1/js/bootstrap.min.js}"></script>
+</body>
+</html>

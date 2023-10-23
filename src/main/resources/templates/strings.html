@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>State 1</title>
+</head>
+
+<div th:fragment="contentA">
+    <body>
+    <h3> Tabela de referência: </h3>
+    <a href="https://frontbackend.com/thymeleaf/thymeleaf-utility-methods-for-strings" target="_blank">Link</a>
+    <form method="GET">
+        <div class="input-container">
+            <input type="hidden" name="name" value="Strings" />
+            <input type="text" name="param" th:value="${entrada}" placeholder="Digite sua entrada">
+            <button type="submit">Enviar</button>
+        </div>
+    </form>
+
+    <table>
+        <tr>
+            <th colspan="1">Verifica se a string é vazia (ou nula)</th>
+        </tr>
+        <tr>
+            <td th:text="${#strings.isEmpty(entrada)}"></td>
+        </tr>
+        <tr>
+            <td style="font-size: 10px"> ${#strings.isEmpty(entrada)} </td>
+        </tr>
+        <tr>
+            <td style="font-size: 10px"> Também funciona com array, lists e set </td>
+        </tr>
+    </table>
+
+
+    <table>
+        <tr>
+            <th colspan="3">Coloca valor default para caso a string seja nula</th>
+        </tr>
+        <tr>
+            <td th:text="${#strings.defaultString(entrada,'Valor default')}"></td>
+        </tr>
+        <tr>
+            <td style="font-size: 10px"> ${#strings.defaultString(text,default)} </td>
+        </tr>
+        <tr>
+            <td style="font-size: 10px"> Também funciona com array, lists e set </td>
+        </tr>
+    </table>
+
+    <br/>
+    <br/>
+
+    <table>
+        <tr>
+            <th colspan="4"> Verifica se contem na string 'ca' na string </th>
+        </tr>
+        <tr>
+            <th> Case-sensitive </th>
+            <th> Não case-sensitive </th>
+        </tr>
+        <tr>
+            <td th:text="${#strings.contains(entrada,'ca')}"></td>
+            <td th:text="${#strings.containsIgnoreCase(entrada,'ca')}"></td>
+        </tr>
+        <tr>
+            <td style="font-size: 10px"> ${#strings.contains(entrada,'ez')} </td>
+            <td style="font-size: 10px"> ${#strings.containsIgnoreCase(entrada,'ez')} </td>
+        </tr>
+        <tr>
+            <td style="font-size: 10px"> Também funciona com array, lists e set </td>
+        </tr>
+    </table>
+
+    <br/>
+    <br/>
+
+    <table>
+        <tr>
+            <th colspan="2"> Adiciona sufixo ou prefixo na string - Ex: 'ER'</th>
+        </tr>
+        <tr>
+            <th> Prefixo </th>
+            <th> Sufixo </th>
+        </tr>
+        <tr>
+            <td th:text="${#strings.prepend(entrada,'er')}"></td>
+            <td th:text="${#strings.append(entrada,'er')}"></td>
+        </tr>
+        <tr>
+            <td style="font-size: 10px"> ${#strings.prepend(entrada,'prefix')} </td>
+            <td style="font-size: 10px"> ${#strings.append(entrada,'prefix')} </td>
+        </tr>
+    </table>
+
+    </body>
+</div>
+</html>

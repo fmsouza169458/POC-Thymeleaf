@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>State 1</title>
+</head>
+
+<div th:fragment="contentA">
+    <body>
+        <h3> Tabela de referência: </h3>
+        <a href="https://frontbackend.com/thymeleaf/thymeleaf-utility-methods-for-dates" target="_blank">Link</a>
+        <form method="GET">
+            <div class="input-container">
+                <input type="hidden" name="name" value="Dates" />
+                <input type="date" name="param" th:value="${entrada}" placeholder="Digite sua entrada">
+                <button type="submit">Enviar</button>
+            </div>
+        </form>
+        <p> Importante: A data a ser formatada deve ser necessariamente do tipo Java.util.Date </p>
+
+        <table th:with="sdf=${new java.text.SimpleDateFormat('yyyy-MM-dd')}">
+            <tr>
+                <th colspan="1">Formata data para formato local</th>
+            </tr>
+            <tr>
+                <td th:text="${#dates.format(sdf.parse(entrada))}"></td>
+            </tr>
+            <tr>
+                <td style="font-size: 10px"> ${#dates.format(sdf.parse(entrada), 'dd/MM/yyyy')} </td>
+            </tr>
+            <tr>
+                <td style="font-size: 10px"> Também funciona com array, lists e set </td>
+
+            </tr>
+        </table>
+
+        <table th:with="sdf=${new java.text.SimpleDateFormat('yyyy-MM-dd')}">
+            <tr>
+                <th colspan="1">Formata data para ISO8601 </th>
+            </tr>
+            <tr>
+                <td th:text="${#dates.formatISO(sdf.parse(entrada))}"></td>
+            </tr>
+            <tr>
+                <td style="font-size: 10px"> ${#dates.formatISO(sdf.parse(entrada))} </td>
+            </tr>
+            <tr>
+                <td style="font-size: 10px"> Também funciona com array, lists e set </td>
+
+            </tr>
+        </table>
+
+        <table th:with="sdf=${new java.text.SimpleDateFormat('yyyy-MM-dd')}">
+            <tr>
+                <th colspan="1">Formata data para formato local</th>
+            </tr>
+            <tr>
+                <td th:text="${#dates.format(sdf.parse(entrada), 'MM/dd/yyyy')}"></td>
+            </tr>
+            <tr>
+                <td style="font-size: 10px"> ${#dates.format(sdf.parse(entrada), 'dd/MM/yyyy')} </td>
+            </tr>
+            <tr>
+                <td style="font-size: 10px"> Também funciona com array, lists e set </td>
+
+            </tr>
+        </table>
+
+        <table th:with="sdf=${new java.text.SimpleDateFormat('yyyy-MM-dd')}">
+            <tr>
+                <th colspan="2">Cada elemento da data</th>
+            </tr>
+            <tr>
+                <th>Dia:</th>
+                <td th:text="${#dates.day(sdf.parse(entrada))}"></td>
+            </tr>
+            <tr>
+                <th>Mes:</th>
+                <td th:text="${#dates.month(sdf.parse(entrada))}"></td>
+            </tr>
+            <tr>
+                <th>Nome do mês:</th>
+                <td th:text="${#dates.monthName(sdf.parse(entrada))}"></td>
+            </tr>
+            <tr>
+                <th>Ano:</th>
+                <td th:text="${#dates.year(sdf.parse(entrada))}"></td>
+            </tr>
+            <tr>
+                <th>Dia da semana:</th>
+                <td th:text="${#dates.dayOfWeekName(sdf.parse(entrada))}"></td>
+            </tr>
+        </table>
+
+    </body>
+</div>
+</html>
